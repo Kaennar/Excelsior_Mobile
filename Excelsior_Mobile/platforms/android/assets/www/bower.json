@@ -1,0 +1,16 @@
+{
+  "name": "components",
+  "version": "0.0",
+  "authors": [
+    "Nicholas Hemstreet <nhemstreet@austin.rr.com>"
+  ],
+  "description": "this is a list of the frameworks used inside of excelsior's main mobile mapp",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
