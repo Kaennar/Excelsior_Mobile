@@ -4,6 +4,7 @@ var myApp = new Framework7();
 var mainView = myApp.addView('.view-main', {
             // Because we use fixed-through navbar we can enable dynamic navbar
             dynamicNavbar: true
+            
         });
 var excelsior = {
     // Initialize your app
@@ -18,6 +19,7 @@ var excelsior = {
             });
         });
         excelsior.registerHandlebarHelpers();
+        excelsior.loadCoachesListView();
     },
     // Generate dynamic page
     createContentPage: function() {
@@ -53,12 +55,13 @@ var excelsior = {
     loadCoachesListView:function(){
         console.log("Load Coaches List View Called");
         $("#titleLabel").html("Coaches");
+        excelsior.loadNavbarElementsForView("coachListView");
         //This is what the json returned from the remote server should look like (IE have the same characteristic names)
         var coach= { "array":[
             {"firstname":"Taylor","id":"0","lastname":"Robinson","Bio":"Sorority girl at UNT Alpha Phi.","ExperienceLevel":"Expert","TimeDrop":"120","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
                 {"title":"She's alright. Wasnt good with kids.","content":"Couldn't teach the kids to streamline","assoc_user":"Melony Devogler","postDate":"11/12/2012","rating":"4.5/10"},
                 {"title":"We loved how excited she was about everything all the time!","content":"Exuberant little puppy","assoc_user":"Cassidy Kleinmeyer","postDate":"12/17/2014","rating":"9.6/10"}
-             z   ]},
+                ]},
             {"firstname":"Seth","id":"1" ,"lastname":"Timmons","Bio":"Swimmer at Oakland University","ExperienceLevel":"Master","TimeDrop":"200","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
                 {"title":"Couldn't tell if stick or Seth.","content":"Unsure if he would survive a windstorm.","assoc_user":"Hannah Stroud","postDate":"11/12/2012","rating":"6.6/10"}
             ]},
@@ -72,7 +75,7 @@ var excelsior = {
         $.get("templates/coach-list-template.hbs",function(data){
             var template= Handlebars.compile(data);
             var handlebarshtml=template(coach);
-            mainView.router.loadContent(handlebarshtml);
+            $("#appContainer").html(handlebarshtml);
         },"html"); 
         //We should have some sort of historyArray to be able to traverse forwards and backwards through the pages
         //Think like a pop on pop off kind of stack storing return function and name with an id of some sort
@@ -88,7 +91,7 @@ var excelsior = {
         if (typeof(id) === "undefined"){ alert("This is not a coach"); return; }
         //if we are supposed to store this profile (as in if we need to save this to come back to)
         if (storeProfile) excelsior.popOnStack(function(){excelsior.loadCoachesListView;});
-
+        excelsior.loadNavbarElementsForView("coachProfileView");
         //Perform an ajax call to get the coaches data using the id we provided for us this will just be loading from a json file
         var newid=parseInt(id);
         switch (newid){
@@ -158,6 +161,37 @@ var excelsior = {
             }
         });
     },
+
+    loadNavbarElementsForView:function(viewname){
+
+        switch (viewname){
+
+            case "coachListView":
+            $("#rightButton").html("");
+            $("#leftButton").html("");
+            break;
+
+            case "profileView":
+            $("#rightButton").html("");
+            $("#leftButton").html("");
+            break;
+            
+            case "coachProfileView":
+            $("#rightButton").html('<a onClick="" class="button">Favorite</a>');
+            $("#leftButton").html('<a href="#" class="button icon-only open-panel">Back to browsing</i></a></div>');
+            break;
+
+           default:
+            $("#rightButton").html("");
+            $("#leftButton").html("");
+            console.log("Unrecognized view");
+            break;
+
+        }
+    },
+
+
+
     popOnStack:function(returnFunction){
 
         if (typeof(historyArray) == "undefined"){
