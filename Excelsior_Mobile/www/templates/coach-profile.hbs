@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-100" style="padding-left:43px;">
+        <video width="500" height="375"controls>
+            <source src="{{video_url}}">
+        </video>
+    </div>
+    <div class="col-100">
+        <b style="font-size:160%; padding-left:16px;"> 
+            {{firstname}} {{lastname}}
+        </b>
+        <div class="content-block-title"> Details </div>
+        <div style="padding-left:16px;"
+        <p> <b>Bio:</b>
+            {{Bio}}
+        </p>
+        {{#if ExperienceLevel}}
+        <P><b>Experience Level: </b>{{ExperienceLevel}}
+        </p>
+        {{/if}}
+        {{#if TimeDrop}}
+        <p><b>Time Dropped: </b> {{TimeDrop}}
+        </p>
+        {{/if}}
+    </div>
+    </div>
+</div>
+{{#if Reviews}}
+<div class="content-block-title">
+    Reviews
+</div>
+<div class="content-block">
+{{#each Reviews}}
+    <div class="row" style="padding:2px; color:black;">
+            <div class="col-75">
+                <b> {{title}}</b>
+            </div>
+            <div class="col-25">
+                {{rating}}
+            </div>
+    </div>
+    <div class="row" style="color:black;">
+        <div class="col-100">
+            {{content}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-60">
+        </div>
+        <div class="col-15">
+            {{postDate}}
+        </div>
+        <div class="col-25">
+            by {{assoc_user}}
+        </div>
+    </div>
+{{/each}}
+{{/if}}

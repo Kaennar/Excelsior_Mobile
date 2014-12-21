@@ -1,0 +1,31 @@
+{{#each array}}
+<div class="row" style="padding:2px;">
+	<div class="col-50">
+	{{#if video_url}}
+	    <video width="300" height="225"controls>
+	        <source src={{{video_url}}}>
+	    </video>
+	{{/if}}
+	</div>
+	<a onClick="excelsior.loadCoachProfileView({{id}});">
+	<div class="col-50">
+	    <p><b>{{firstname}} {{lastname}}</b></p>
+	    {{#if Bio}}
+	    	<p> <b>Bio:</b> {{Bio}}</p>
+	    {{/if}}
+	    {{#if ExperienceLevel}}
+	    	<p><b>Experience Level:</b>{{ExperienceLevel}}</p>
+	    {{/if}}
+	    {{#if Location}}
+	    	<p><b>Location:</b> {{Location}}</p>
+	    {{/if}}
+	    {{#if FunFact}}
+	    	<p><b>Fun Fact:</b> {{FunFact}}</p>
+	    {{/if}}
+	    {{#if TimeDrop}}
+	    	<p><b>Time Drop:</b> {{TimeDrop}}</p>
+	    {{/if}}
+	</div>
+	</div>
+</div>
+{{/each}}
