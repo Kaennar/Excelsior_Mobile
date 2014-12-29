@@ -6,6 +6,17 @@ var mainView = myApp.addView('.view-main', {
             dynamicNavbar: true
             
         });
+//Precompile all templates inside of the init function
+//Coach List and Coach View Templates
+
+var coachListTemplate;
+function initTemplates(){
+        //More Tab Templates
+    
+    
+
+}
+
 var excelsior = {
     // Initialize your app
     init:function(){
@@ -16,10 +27,13 @@ var excelsior = {
             $$('.create-page').on('click', function () {
                 excelsior.createContentPage();
                 excelsior.loadCoachesListView();
+                excelsior.loadMoreTab(); //REMEMBER TO REMOVE THIS
             });
         });
         excelsior.registerHandlebarHelpers();
         excelsior.loadCoachesListView();
+        initTemplates();
+        excelsior.loadMoreTab(); //REMEMBER TO REMOVE THIS
     },
     // Generate dynamic page
     createContentPage: function() {
@@ -54,11 +68,9 @@ var excelsior = {
     },
     loadCoachesListView:function(){
         console.log("Load Coaches List View Called");
-        $("#titleLabel").html("Coaches");
-        excelsior.loadNavbarElementsForView("coachListView");
         //This is what the json returned from the remote server should look like (IE have the same characteristic names)
         var coach= { "array":[
-            {"firstname":"Taylor","id":"0","lastname":"Robinson","Bio":"Sorority girl at UNT Alpha Phi.","ExperienceLevel":"Expert","TimeDrop":"120","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
+            {"firstname":"Alex","id":"0","lastname":"Jackson","Bio":"Sorority girl at Texas A&M Delta Gamma.","ExperienceLevel":"Expert","TimeDrop":"120","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
                 {"title":"She's alright. Wasnt good with kids.","content":"Couldn't teach the kids to streamline","assoc_user":"Melony Devogler","postDate":"11/12/2012","rating":"4.5/10"},
                 {"title":"We loved how excited she was about everything all the time!","content":"Exuberant little puppy","assoc_user":"Cassidy Kleinmeyer","postDate":"12/17/2014","rating":"9.6/10"}
                 ]},
@@ -72,19 +84,18 @@ var excelsior = {
         //Here we load the template from its file inside templates and add the data in. 
         //ToDo: Implement this inside of the ajax call that will pull down because the ajax call will take longer than the
         // html rendering
-        $.get("templates/coach-list-template.hbs",function(data){
-            var template= Handlebars.compile(data);
-            var handlebarshtml=template(coach);
-            $("#appContainer").html(handlebarshtml);
-        },"html"); 
+        $.get("templates/coach-list-template.hbs",
+            function(data){
+                coachListTemplate=Template7.compile(data);
+                var html=coachListTemplate(coach);
+                mainView.router.loadContent(html);
+            },
+            "html");
         //We should have some sort of historyArray to be able to traverse forwards and backwards through the pages
         //Think like a pop on pop off kind of stack storing return function and name with an id of some sort
 
         //Pull down data from the server to load as the coaches 
         //Send the current location and any preferences the user may have
-
-
-
     },
     loadCoachProfileView:function(id,storeProfile){
         //Look to make sure that we are able to load the coaches profile
@@ -96,7 +107,7 @@ var excelsior = {
         var newid=parseInt(id);
         switch (newid){
             case 0:
-            coachdata={"firstname":"Taylor","lastname":"Robinson","id":"0","Bio":"Sorority girl at UNT Alpha Phi.","ExperienceLevel":"Expert","TimeDrop":"120","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
+            coachdata={"firstname":"Alex","lastname":"Jackson","id":"0","Bio":"Engineering major at Texas A&M Univeristy.","ExperienceLevel":"Expert","TimeDrop":"120","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
                 {"title":"Shes alright. Wasnt good with kids.","content":"Couldnt teach the kids to streamline","assoc_user":"Melony Devogler","postDate":"11/12/2012","rating":"4.5/10"},
                 {"title":"We loved how excited she was about everything all the time!","content":"Exuberant little puppy","assoc_user":"Cassidy Kleinmeyer","postDate":"12/17/2014","rating":"9.6/10"}
                 ]};
@@ -113,11 +124,15 @@ var excelsior = {
             break;
         }        
         //Load the template and turn the json into the html
-        $.get("templates/coach-profile.hbs",function(data){
-            var template= Handlebars.compile(data);
-            var handlebarshtml=template(coachdata);
-            $("#appContainer").html(handlebarshtml);
-        },"html"); 
+        var coachProfileTemplate;
+        $.get("templates/coach-profile.hbs",
+            function(data){
+                coachProfileTemplate=Template7.compile(data);
+                var handlebarshtml=coachProfileTemplate(coachdata);
+                mainView.router.loadContent(handlebarshtml);
+                console.log("HTML: "+html);
+            },
+            "html");
 
 
 
@@ -125,14 +140,43 @@ var excelsior = {
     loadUserProfileView:function(){
         console.log("Load Profile View Called");
         //Load user data from a local file (we will keep things like the user picture, username and preferences on board)
-
+        var userProfileTemplate;
+        $.get("templates/user-profile-list.hbs",
+            function(data){
+                userProfileTemplate=Template7.compile(data);
+                console.log("HTML: "+html);
+            },
+            "html");
         //Send the users password and the entered username to the server for auithentication
         //Then call down the data to populate the profile view
 
     },
+
+    loadCalendarAppointments:function(){
+
+        //We will need to do a call to the server to get the right appointments for this calendar. 
+        /*
+            For us we don't give a shit so we'll just make the schema and directly
+            inser it into the code here. 
+            What we dont know is how we want to store this to increase the speed of the app.
+            Also how do we have this insert events into the calendar.
+        */
+        var json= {"appointments":[
+            {"title":"Alex Jackson-stroke session","date":""}
+
+
+            ]};
+
+
+        $.get("templates/appointments-calendar.hbs",function(data){
+            var calendarTemplate=Template7.compile(data);
+            var handlebarshtml=calendarTemplate();
+            mainView.router.loadContent(handlebarshtml);
+        },"html");
+    },
     registerHandlebarHelpers:function(){
         console.log("Handlebrs Register Called");
-        Handlebars.registerHelper('compare', function(lvalue, rvalue, options) {
+        Template7.registerHelper('compare', function(lvalue, rvalue, options) {
 
             if (arguments.length < 3)
                 throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
@@ -161,7 +205,17 @@ var excelsior = {
             }
         });
     },
+    favoriteCoach:function(id){
 
+        $.ajax({
+            type:"GET",
+            url:"js/data/user_settings.xml",
+            datatype:"xml",
+            success:function(data){
+                $(data)
+            },
+        });
+    },
     loadNavbarElementsForView:function(viewname){
 
         switch (viewname){
@@ -189,9 +243,45 @@ var excelsior = {
 
         }
     },
+    loadMoreTab:function(user_id){
+        
+        var moreTabJson={
+            "user_id":"17",
+            "favCoach":[{"firstname":"Alex","lastname":"Jackson","id":"0","Bio":"Engineering major at Texas A&M Univeristy.","ExperienceLevel":"Expert","TimeDrop":"120","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
+                {"title":"Shes alright. Wasnt good with kids.","content":"Couldnt teach the kids to streamline","assoc_user":"Melony Devogler","postDate":"11/12/2012","rating":"4.5/10"},
+                {"title":"We loved how excited she was about everything all the time!","content":"Exuberant little puppy","assoc_user":"Cassidy Kleinmeyer","postDate":"12/17/2014","rating":"9.6/10"}
+                ]}],
+            "recViewedCoach":[{"firstname":"Seth", "lastname":"Timmons","id":"1","Bio":"Swimmer at Oakland University","ExperienceLevel":"Master","TimeDrop":"200","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
+                {"title":"Couldnt tell if stick or Seth.","content":"Unsure if he would survive a windstorm.","assoc_user":"Hannah Stroud","postDate":"11/12/2012","rating":"6.6/10"}]
+                }]
+        };
+
+        var moreListTemplate;
+        $.get("templates/more-list.hbs",
+            function(data){
+                moreListTemplate=Template7.compile(data);
+                var handlebarshtml=moreListTemplate(moreTabJson);
+                mainView.router.loadContent(handlebarshtml);
+            },
+        "html");
+
+        //test the output of the json converter
+        //**** The XML call will only work if it is inside of a <document></document> thing ****
+        //Load Favorited coaches from the user_settings.xml
+        //Load Recent Coaches from the user_settings.xml
+        //Need to get the user id from user_settings.xml
 
 
+    },
+    loadAthleteProfiles:function(user_id){
 
+    },
+    loadAccountSettings:function(user_id){
+
+    },
+    loadContactExcelsior:function(user_id){
+
+    },
     popOnStack:function(returnFunction){
 
         if (typeof(historyArray) == "undefined"){

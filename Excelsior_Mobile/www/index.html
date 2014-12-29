@@ -25,7 +25,11 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/Metro-UI-CSS/metro-bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/Metro-UI-CSS/metro-bootstrap-responsive.min.css" />
         <link rel="stylesheet" type="text/css" href="bower_components/framework7/dist/css/framework7.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="iconFont.min.css" />
         <link rel="stylesheet" type="text/css" href="css/my-app.css" />
         <title>Excelsior Swimming</title>
     </head>
@@ -53,9 +57,8 @@
                 Right link contains only icon - additional "icon-only" class
                 Additional "open-panel" class tells app to open panel when we click on this link
               -->
-              <a href="#" class="button icon-only open-panel">Back to browsing</i></a>
             </div>
-            <div class="center sliding" id="titleLabel">Coach Profile</div>
+            <div class="center sliding" id="titleLabel">Excelsior Swimming</div>
             
           <div class="right" id="rightButton">
             <a onClick="" class="button">
@@ -79,9 +82,9 @@
         <div class="toolbar">
           <div class="toolbar-inner">
             <!-- Toolbar links -->
-            <a onClick="excelsior.loadAppointmentsView();"class="link">Appointments</a>
+            <a onClick="excelsior.loadCalendarAppointments();"class="link">Appointments</a>
             <a onClick="excelsior.loadCoachesListView();" class="link">Coaches</a>
-            <a onClick="excelsior.loadUserProfileView();"class="link">Profile</a>
+            <a onClick="excelsior.loadMoreTab();"class="link">More</a>
           </div>
         </div>
       </div>
@@ -90,11 +93,12 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"> </script>
         <script type="text/javascript" src="bower_components/framework7/dist/js/framework7.min.js"></script>
-        <script type="text/javascript" src="bower_components/handlebars/handlebars.min.js"> </script>
+        <script type="text/javascript" src="bower_components/Metro-UI-CSS/metro.min.js"></script>
+        <script type="text/javascript" src="js/jsonxmlhelpers.js">
+        </script>
         <script type="text/javascript" src="js/my-app.js"> </script>
         <script type="text/javascript">
             excelsior.init();
-            var historyArray=[];
         </script>
     </body>
 </html>

@@ -1,0 +1,18 @@
+<document>
+	<user>
+		<user_id>1 </user_id>
+		<login></login>
+	</user>
+
+	<favCoach>
+		<coach>
+			<firstname>Alex</firstname><id>0</id><lastname>Jackson</lastname><Bio>Engineering major Texas A&M University</Bio><ExperienceLevel>Expert</ExperienceLevel><TimeDrop>120</TimeDrop><video_url>js/data/Breeja_Larson_BioVideo.mp4</video_url><Reviews><title>She's alright. Wasnt good with kids.</title><content>Couldn't teach the kids to streamline</content><assoc_user>Melony Devogler</assoc_user><postDate>11/12/2012</postDate><rating>4.5/10</rating></Reviews><Reviews><title>We loved how excited she was about everything all the time!</title><content>Exuberant little puppy</content><assoc_user>Cassidy Kleinmeyer</assoc_user><postDate>12/17/2014</postDate><rating>9.6/10</rating></Reviews>
+		</coach>
+	</favCoach>
+
+	<recViewedCoach>
+		<coach>
+			<firstname>Seth</firstname><id>1</id><lastname>Timmons</lastname><Bio>Swimmer at Oakland University</Bio><ExperienceLevel>Master</ExperienceLevel><TimeDrop>200</TimeDrop><video_url>js/data/Breeja_Larson_BioVideo.mp4</video_url><Reviews><title>Couldn't tell if stick or Seth.</title><content>Unsure if he would survive a windstorm.</content><assoc_user>Hannah Stroud</assoc_user><postDate>11/12/2012</postDate><rating>6.6/10</rating></Reviews>
+		</coach>
+	</recViewedCoach>
+</document>
