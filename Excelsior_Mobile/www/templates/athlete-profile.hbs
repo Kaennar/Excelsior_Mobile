@@ -1,0 +1,42 @@
+<!-- Top Navbar -->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left"><a href="#" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+        <div class="center sliding"> Athlete Profile
+        </div>
+        <div class="right"><a class="button"><b>+</b></a></div>
+    </div>
+</div>
+
+
+<div class="pages">
+    <div class="page" data-page="appointments-calendar">
+        <div class="page-content">
+            {{#each athleteprofile}}
+            <div class="row">
+                <div class="col-25">
+                    <img src={{profile_pic}} height="99" width="150"> </img>
+                </div>
+                <div class="col-75">
+                    <p><b>Name: </b> {{firstname}} {{lastname}} </p>
+                    <p><b>Age: </b> {{age}} </p>
+                    <p><b>Skill Level: </b> {{skilllevel}} </p>
+                    <p><b>Description: </b> {{description}} </p>
+                </div>
+            </div>
+                <div class="col-100"><div class="content-block-title">Recent Coaches</div>
+                <div class="content-block"> 
+                    <div class="row">
+                        {{#each recentcoach}}
+                            <a onClick="excelsior.loadCoachProfileView({{id}});"> 
+                                <div class="col-50">{{firstname}} {{lastname}}</div>
+                                <div class="col-50" style="text-align:right;">{{sessiondate}}</div>
+                            </a>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

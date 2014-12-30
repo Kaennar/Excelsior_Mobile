@@ -130,7 +130,6 @@ var excelsior = {
                 coachProfileTemplate=Template7.compile(data);
                 var handlebarshtml=coachProfileTemplate(coachdata);
                 mainView.router.loadContent(handlebarshtml);
-                console.log("HTML: "+html);
             },
             "html");
 
@@ -274,6 +273,35 @@ var excelsior = {
 
     },
     loadAthleteProfiles:function(user_id){
+        console.log("Load Athlete Profiles Called");
+        //Complete the Ajax call to the server for the athlete profiles sending the userid
+
+        /*
+        $.ajax({
+
+        });*/
+        var json={
+            "athleteprofile":[
+                {"profile_pic":"js/data/QuinnCarrozza.jpg","firstname":"Jacob", "lastname":"Atkinson","age":"12","skilllevel":"Beginner","description":"He's kind of a royal deusche.",
+                "recentcoach":[
+                    {"firstname":"Seth","lastname":"Timmons","id":"1","sessiondate":"November 2, 2014"},
+                    {"firstname":"Hunter","lastname":"Artman","id":"2","sessiondate":"November 9, 2014"}
+                    ]},
+                {"profile_pic":"js/data/QuinnCarrozza.jpg","firstname":"Billy", "lastname":"Atkinson","age":"13","skilllevel":"Summer League","description":"He's kind of a royal deusche.",
+                "recentcoach":[
+                    {"firstname":"Seth","lastname":"Timmons","id":"1","sessiondate":"November 2, 2014"},
+                    {"firstname":"Hunter","lastname":"Artman","id":"2","sessiondate":"November 9, 2014"}
+                    ]}]
+        };
+        var athleteProfileTemplate;
+        $.get("templates/athlete-profile.hbs",
+            function(data){
+                athleteProfileTemplate=Template7.compile(data);
+                var handlebarshtml=athleteProfileTemplate(json);
+                mainView.router.loadContent(handlebarshtml);
+            },
+        "html");
+        //Take care of data management here
 
     },
     loadAccountSettings:function(user_id){
