@@ -11,6 +11,10 @@
                         {
                             "xml": "<feature name=\"NativePageTransitions\"><param name=\"android-package\" value=\"com.telerik.plugins.nativepagetransitions.NativePageTransitions\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -19,6 +23,12 @@
     },
     "installed_plugins": {
         "com.telerik.plugins.nativepagetransitions": {
+            "PACKAGE_NAME": "com.excelsior.mobile.dev"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.excelsior.mobile.dev"
+        },
+        "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.excelsior.mobile.dev"
         }
     },
