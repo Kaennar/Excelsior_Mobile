@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <array>
+        <coach>
+            <firstname>Taylor</firstname>
+            <id>0</id>
+            <lastname>Robinson</lastname>
+            <Bio>Sorority girl at UNT Alpha Phi.</Bio>
+            <ExperienceLevel>Expert</ExperienceLevel>
+            <TimeDrop>120</TimeDrop>
+            <video_url>js/data/Breeja_Larson_BioVideo.mp4</video_url>
+            <Reviews>
+                <title>She's alright. Wasnt good with kids.</title>
+                <content>Couldn't teach the kids to streamline</content>
+                <assoc_user>Melony Devogler</assoc_user>
+                <postDate>11/12/2012</postDate>
+                <rating>4.5/10</rating>
+            </Reviews>
+            <Reviews>
+                <title>We loved how excited she was about everything all the time!</title>
+                <content>Exuberant little puppy</content>
+                <assoc_user>Cassidy Kleinmeyer</assoc_user>
+                <postDate>12/17/2014</postDate>
+                <rating>9.6/10</rating>
+            </Reviews>
+        </coach>
+        <coach>
+            <firstname>Seth</firstname>
+            <id>1</id>
+            <lastname>Timmons</lastname>
+            <Bio>Swimmer at Oakland University</Bio>
+            <ExperienceLevel>Master</ExperienceLevel>
+            <TimeDrop>200</TimeDrop>
+            <video_url>js/data/Breeja_Larson_BioVideo.mp4</video_url>
+            <Reviews>
+                <title>Couldn't tell if stick or Seth.</title>
+                <content>Unsure if he would survive a windstorm.</content>
+                <assoc_user>Hannah Stroud</assoc_user>
+                <postDate>11/12/2012</postDate>
+                <rating>6.6/10</rating>
+            </Reviews>
+        </coach>
+        <coach>
+            <firstname>Hunter</firstname>
+            <id>2</id>
+            <lastname>Artman</lastname>
+            <Bio>Swimmer at Texas A&amp;M University</Bio>
+            <ExperienceLevel>Master</ExperienceLevel>
+            <TimeDrop>340</TimeDrop>
+            <video_url>js/data/Breeja_Larson_BioVideo.mp4</video_url>
+            <Reviews>
+                <title>Likes too much distance.</title>
+                <content>Encouraged massive amounts of cardio.</content>
+                <assoc_user>Melony Devogler</assoc_user>
+                <postDate>11/12/2012</postDate>
+                <rating>4.5/10</rating>
+            </Reviews>
+        </coach>
+    </array>

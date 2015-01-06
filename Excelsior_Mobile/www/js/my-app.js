@@ -1,21 +1,13 @@
 var dynamicPageIndex = 0;
 var $$ = Dom7;
 var myApp = new Framework7();
+var debugItem;
+var currentDate=new Date();
 var mainView = myApp.addView('.view-main', {
             // Because we use fixed-through navbar we can enable dynamic navbar
             dynamicNavbar: true
             
         });
-//Precompile all templates inside of the init function
-//Coach List and Coach View Templates
-
-var coachListTemplate;
-function initTemplates(){
-        //More Tab Templates
-    
-    
-
-}
 
 var excelsior = {
     // Initialize your app
@@ -32,7 +24,6 @@ var excelsior = {
         });
         excelsior.registerHandlebarHelpers();
         excelsior.loadCoachesListView();
-        initTemplates();
         excelsior.loadMoreTab(); //REMEMBER TO REMOVE THIS
     },
     // Generate dynamic page
@@ -101,8 +92,6 @@ var excelsior = {
         //Look to make sure that we are able to load the coaches profile
         if (typeof(id) === "undefined"){ alert("This is not a coach"); return; }
         //if we are supposed to store this profile (as in if we need to save this to come back to)
-        if (storeProfile) excelsior.popOnStack(function(){excelsior.loadCoachesListView;});
-        excelsior.loadNavbarElementsForView("coachProfileView");
         //Perform an ajax call to get the coaches data using the id we provided for us this will just be loading from a json file
         var newid=parseInt(id);
         switch (newid){
@@ -165,12 +154,11 @@ var excelsior = {
 
 
             ]};
-
-
         $.get("templates/appointments-calendar.hbs",function(data){
             var calendarTemplate=Template7.compile(data);
             var handlebarshtml=calendarTemplate();
             mainView.router.loadContent(handlebarshtml);
+            excelsior.loadCalendarData();
         },"html");
     },
     registerHandlebarHelpers:function(){
@@ -310,23 +298,110 @@ var excelsior = {
     loadContactExcelsior:function(user_id){
 
     },
-    popOnStack:function(returnFunction){
+    loadCalendarData:function(){
+        var monthLabel;
+        var numberofdays;
+        switch (currentDate.getMonth()){
+            case 0:
+            numberofdays=31;
+            monthLabel="January";
+            break;
 
-        if (typeof(historyArray) == "undefined"){
-            var historyArray=[];
+            case 1:
+            numberofdays=28;
+            monthLabel="Febuary";
+            break;
+
+            case 2:
+            numberofdays=31;
+            monthLabel="March";
+            break;
+
+            case 3:
+            numberofdays=30;
+            monthLabel="April";
+            break;
+
+            case 4: 
+            numberofdays=31;
+            monthLabel="May";
+            break;
+
+            case 5:
+            numberofdays=30;
+            monthLabel="June";
+            break;
+
+            case 6:
+            numberofdays=31;
+            monthLabel="July";
+            break;
+
+            case 7:
+            numberofdays=31;
+            monthLabel="August";
+            break;
+
+            case 8:
+            numberofdays=30;
+            monthLabel="September";
+            break;
+
+            case 9:
+            numberofdays=31;
+            monthLabel="October";
+            break;
+
+            case 10:
+            numberofdays=30;
+            monthLabel="November";
+            break;
+
+            case 11:
+            numberofdays=31;
+            monthLabel="December";
+            break;
         }
-        historyArray[historyArray.length]=returnFunction;
+        currentDate.setDate(1);
+        var j=1;
+        for (i=currentDate.getDay();i<numberofdays;i++){
+            var html="<p>"+j+"</p>";
+            j++;
+            $("#"+(i)).html(html);
+
+        }
+        var monthHTML= "<h1>"+monthLabel+"</h1>";
+        $("#monthLabel").html(monthHTML);
+        
     },
-    popOffStack:function(){
-
-        if(typeof(historyArray) != "undefined" && historyArray.length !=0){
-
-            var returnFunction=new Function(historyArray[historyArray.length-1]);
-            historyArray[historyArray.length-1]=null;
-            return returnFunction();
-            
-        }else if (typeof(historyArray) !="undefined" && historyArray.length ==0){
-            //Figure out what to do when we have nowhere else to go later on
+    loadPreviousMonth:function(){
+        var monthnumber=currentDate.getMonth();
+        if (monthnumber != 0){
+            currentDate.setMonth(monthnumber-1);
+        }else {
+            currentDate.setMonth(11);
+            var year=currentDate.getFullYear()-1;
+            currentDate.setYear(year);
+        }
+        excelsior.clearCalendar();
+        excelsior.loadCalendarData();
+    },
+    loadNextMonth:function(){
+        var monthnumber=currentDate.getMonth();
+        if (monthnumber != 11){
+            currentDate.setMonth(monthnumber+1);
+        }else {
+            currentDate.setMonth(0);
+            var year=currentDate.getFullYear()+1;
+            currentDate.setYear(year);
+        }
+        excelsior.clearCalendar();
+        excelsior.loadCalendarData();
+    },
+    clearCalendar:function(){
+        var i;
+        for (i=0;i<35;++i){
+            $("#"+i).html("");
         }
     }
 }

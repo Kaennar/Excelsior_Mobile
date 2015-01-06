@@ -1,3 +1,17 @@
-.calendar{
-	
+.center{
+	text-align: center;
+}
+.calendar-title{
+	padding-bottom: 5px;
+}
+i.icon.icon-forward{
+  width: 12.5px;
+  height: 15px;
+  text-align: left;
+  background-image: url("glyphicons/png/glyphicons-179-step-forward.png");
+}
+i.icon.icon-backward{
+	width: 12.5px;
+	height: 15px;
+	background-image: url("glyphicons/png/glyphicons-171-step-backward.png");
 }

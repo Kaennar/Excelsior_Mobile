@@ -1,0 +1,75 @@
+<!-- Top Navbar -->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left"></div>
+        <div class="center sliding"> More
+        </div>
+        <div class="right"></div>
+    </div>
+</div>
+<div class="pages">
+    <div class="page" data-page="coach-list">
+        <div class="page-content">
+        	<div class="list-block">
+        		<div class="list-block-title"> Favorited Coaches </div>
+        		<ul>
+					{{#each favCoach}}
+					<a onClick="excelsior.loadCoachProfileView({{id}});">
+        			<li class="item-content">
+        				<div class="item-inner">
+        					<div class="item-title">
+        						{{firstname}} {{lastname}}
+        					</div>
+        				</div>
+        			</li>
+        			</a>
+        			{{/each}}
+        		</ul>
+        	</div>
+        	<div class="list-block">
+        		<div class="list-block-title">Recently Viewed</div>
+        		<ul>
+					{{#each recViewedCoach}}
+					<a onClick="excelsior.loadCoachProfileView({{id}});">
+        			<li class="item-content">
+        				<div class="item-inner">
+        					<div class="item-title">
+        						{{firstname}} {{lastname}}
+        					</div>
+        				</div>
+        			</li>
+        			</a>
+        			{{/each}}
+        		</ul>
+        	</div>
+        	<div class="list-block">
+        		<div class="list-block-title">My Info</div>
+        		<ul>
+					<a onClick="excelsior.loadAthleteProfiles({{user_id}});">
+        			<li class="item-content">
+        				<div class="item-inner">
+        					<div class="item-title">
+        						Athlete Profiles
+        					</div>
+        				</div>
+        			</li>
+        			</a>
+        			<a onClick="excelsior.loadAccountSettings({{user_id}});">
+        			<li class="item-content">
+        				<div class="item-inner">
+        					<div class="item-title">
+        						Account Settings
+        					</div>
+        				</div>
+        			</li>
+        			</a>
+        		</ul>
+        	</div>
+        	<div class="row">
+        		<div class="col-100">
+        			<a class="button" onclick="excelsior.loadContactExcelsior({{user_id}});"> Conatact Excelsior </a>
+        		</div>
+        	</div>
+        </div>
+    </div>
+</div>
