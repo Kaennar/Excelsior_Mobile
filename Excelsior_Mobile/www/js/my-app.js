@@ -19,12 +19,10 @@ var excelsior = {
             $$('.create-page').on('click', function () {
                 excelsior.createContentPage();
                 excelsior.loadCoachesListView();
-                excelsior.loadMoreTab(); //REMEMBER TO REMOVE THIS
             });
         });
         excelsior.registerHandlebarHelpers();
         excelsior.loadCoachesListView();
-        excelsior.loadMoreTab(); //REMEMBER TO REMOVE THIS
     },
     // Generate dynamic page
     createContentPage: function() {
@@ -218,17 +216,34 @@ var excelsior = {
             }
         });
     },
-    favoriteCoach:function(id){
-
-        $.ajax({
-            type:"GET",
-            url:"js/data/user_settings.xml",
-            datatype:"xml",
-            success:function(data){
-                $(data)
-            },
-        });
-    },
+    favouriteCoach:function(id){
+        var favouritesList=localStorage.getItem("favourite_coach_list");
+        var arr=favouritesList.split(" ");
+        var alreadyExists=false;
+        console.log(favouritesList);
+        for (var el in arr){
+            if (id.toString() == el){
+                alreadyExists=true;
+            }
+        }
+        if(!alreadyExists){
+            if(typeof(id)=="number"){
+                if (favouritesList!= "null"){
+                    favouritesList=favouritesList+" "+id.toString();
+                }else {
+                    favouritesList=id;
+                }
+            alert("Coach added to favourites!");
+            }else {
+                console.log("Type: "+ typeof(id)+ " is unnaacceptable. Must be string.");
+            }
+        }else{
+            alert("Coach already in favourites!");
+            return;
+        }
+        localStorage.setItem("favourite_coach_list",favouritesList);
+        console.log(favouritesList);
+    }, 
     loadNavbarElementsForView:function(viewname){
 
         switch (viewname){
@@ -259,7 +274,7 @@ var excelsior = {
     loadMoreTab:function(user_id){
         
         var moreTabJson={
-            "user_id":"",//CHANGE THIS TO GET THE SIGN IN PAGE TO SHOW UP
+            "user_id":"17",//CHANGE THIS TO GET THE SIGN IN PAGE TO SHOW UP
             "favCoach":[{"firstname":"Alex","lastname":"Jackson","id":"0","Bio":"Engineering major at Texas A&M Univeristy.","ExperienceLevel":"Expert","TimeDrop":"120","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
                 {"title":"Shes alright. Wasnt good with kids.","content":"Couldnt teach the kids to streamline","assoc_user":"Melony Devogler","postDate":"11/12/2012","rating":"4.5/10"},
                 {"title":"We loved how excited she was about everything all the time!","content":"Exuberant little puppy","assoc_user":"Cassidy Kleinmeyer","postDate":"12/17/2014","rating":"9.6/10"}
