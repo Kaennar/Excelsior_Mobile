@@ -15,3 +15,51 @@ i.icon.icon-backward{
 	height: 15px;
 	background-image: url("glyphicons/png/glyphicons-171-step-backward.png");
 }
+i.icon.icon-right-chevron{
+	width: 12.5px;
+	height: 15px;
+	background-image: url("glyphicons/png/glyphicons-224-chevron-right.png");	
+}
+
+.slider-container{
+  height: 90%;
+
+}
+.slider-custom {
+  position:relative;
+  height:100%;
+}
+.slider-slide {
+  background: #fff;
+}
+.slider-slide span {
+  text-align:center;
+  display:block;
+  margin: 20px;
+  font-size:21px;
+}
+.slider-prev-button, .slider-next-button {
+  padding:2px;
+  width:100%;
+  top: 50%;
+  text-align:center;
+}
+.slider-prev-button {
+
+}
+.slider-next-button {
+}
+.slider-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: none;
+
+  border:1px solid #aaa;
+  border-radius: 0 0 0 0;
+  opacity:1;
+  cursor: pointer;
+}
+.slider-pagination-active {
+  background: #007aff;
+  border-color: #007aff;
+}   

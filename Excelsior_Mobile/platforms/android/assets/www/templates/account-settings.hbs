@@ -1,0 +1,68 @@
+<!-- Top Navbar -->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left"></div>
+        <div class="center sliding"> User Settings
+        </div>
+        <div class="right"></div>
+    </div>
+</div>
+
+
+<div class="pages">
+    <div class="page" data-page="account-settings">
+        <div class="page-content">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <!-- Show username -->
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Account </div>
+                                <div class="item-after">{{username}}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block">
+                <ul>
+                    <!--Change Password -->
+                    <li>
+                        <a onclick="excelsior.loadChangePassword({{user_id}});"> </a>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Change Password </div>
+                                <div class="item-after"><span> <i class="icon icon-right-chevron"> </i> </span></div>
+                            </div>
+                        </div>
+                        </a>
+                    </li>
+                    <!--Change Billing Information -->
+                    <li>
+                        <a onclick="excelsior.loadChangeBillingInfo({{user_id}});">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Billing Info</div>
+                                <div class="item-after"> <span>Requires Pin <i class="icon icon-right-chevron"></i></span> </div>
+                            </div>
+                        </div>
+                        </a>
+                    </li>
+                    <!-- Review Coach History --> 
+                    <li>
+                        <a onclick="excelsior.loadTransactionHistory({{user_id}});">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Transaction History</div>
+                                <div class="item-after"> <i class="icon icon-right-chevron"></i></div>
+                            </div>
+                        </div>
+                        </a>
+                    </li>
+                    <!--Recorded Stats(?) -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

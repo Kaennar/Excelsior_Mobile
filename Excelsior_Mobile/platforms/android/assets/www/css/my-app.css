@@ -1,3 +1,64 @@
-.calendar{
-	
+.center{
+	text-align: center;
 }
+.calendar-title{
+	padding-bottom: 5px;
+}
+i.icon.icon-forward{
+  width: 12.5px;
+  height: 15px;
+  text-align: left;
+  background-image: url("glyphicons/png/glyphicons-179-step-forward.png");
+}
+i.icon.icon-backward{
+	width: 12.5px;
+	height: 15px;
+	background-image: url("glyphicons/png/glyphicons-171-step-backward.png");
+}
+i.icon.icon-right-chevron{
+	width: 12.5px;
+	height: 15px;
+	background-image: url("glyphicons/png/glyphicons-224-chevron-right.png");	
+}
+
+.slider-custom {
+  position:relative;
+  height:100%;
+}
+.slider-slide {
+  background: #fff;
+}
+.slider-slide span {
+  text-align:center;
+  display:block;
+  margin: 20px;
+  font-size:21px;
+}
+.slider-prev-button, .slider-next-button {
+  position: absolute;
+  width:44px;
+  background: rgba(0,0,0,0.7);
+  top: 50%;
+  margin-top: -22px;
+  line-height: 44px;
+  text-align:center;
+}
+.slider-prev-button {
+  left:0;
+}
+.slider-next-button {
+  right:0;
+}
+.slider-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: none;
+  border:1px solid #aaa;
+  border-radius: 0 0 0 0;
+  opacity:1;
+  cursor: pointer;
+}
+.slider-pagination-active {
+  background: #007aff;
+  border-color: #007aff;
+}   

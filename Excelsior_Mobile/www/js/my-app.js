@@ -2,13 +2,13 @@ var dynamicPageIndex = 0;
 var $$ = Dom7;
 var myApp = new Framework7();
 var debugItem;
+var signupslider;
 var currentDate=new Date();
 var mainView = myApp.addView('.view-main', {
             // Because we use fixed-through navbar we can enable dynamic navbar
             dynamicNavbar: true
             
         });
-
 var excelsior = {
     // Initialize your app
     init:function(){
@@ -87,6 +87,32 @@ var excelsior = {
 
         //Pull down data from the server to load as the coaches 
         //Send the current location and any preferences the user may have
+    },
+    loadSignUp:function(){
+
+        //Load signup screen
+        console.log("Load Sign Up Called");
+        var json={};
+        var signupTemplate;
+        debugItem=$.get("templates/signup-screen.hbs",
+            function(data){
+                signupTemplate=Template7.compile(data);
+                var handlebarshtml=signupTemplate(json);
+                mainView.router.loadContent(handlebarshtml);
+                signupslider=myApp.slider('.slider-container',{
+                    spaceBetween:100,
+                    pagination:'.slider-pagination',
+                    paginationHide:false,
+                    nextButton:'.slider-next-button',
+                    prevButton:'.slider-prev-button',
+                    onSlideChangeStart:function(slider){
+                        console.log("On Slide Change Start Called");
+                        debugItem=slider;
+                    }
+                });
+                console.log("Signup HTML returned");
+
+        },"html");
     },
     loadCoachProfileView:function(id,storeProfile){
         //Look to make sure that we are able to load the coaches profile
@@ -233,7 +259,7 @@ var excelsior = {
     loadMoreTab:function(user_id){
         
         var moreTabJson={
-            "user_id":"17",
+            "user_id":"",//CHANGE THIS TO GET THE SIGN IN PAGE TO SHOW UP
             "favCoach":[{"firstname":"Alex","lastname":"Jackson","id":"0","Bio":"Engineering major at Texas A&M Univeristy.","ExperienceLevel":"Expert","TimeDrop":"120","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
                 {"title":"Shes alright. Wasnt good with kids.","content":"Couldnt teach the kids to streamline","assoc_user":"Melony Devogler","postDate":"11/12/2012","rating":"4.5/10"},
                 {"title":"We loved how excited she was about everything all the time!","content":"Exuberant little puppy","assoc_user":"Cassidy Kleinmeyer","postDate":"12/17/2014","rating":"9.6/10"}
@@ -293,7 +319,21 @@ var excelsior = {
 
     },
     loadAccountSettings:function(user_id){
-
+        console.log("Load Account Settings Called")
+        var json={
+            "username":"Excelsior and Friends",
+            "user_id":"0"
+        };
+        var accountSettingsTemplate;
+        debugItem=$.get("templates/account-settings.hbs",
+            function(data){
+                console.log("Account Settings HTML came back");
+                accountSettingsTemplate=Template7.compile(data);
+                var handlebarshtml=accountSettingsTemplate(json);
+                mainView.router.loadContent(handlebarshtml);
+            },
+            "html");
+        //Take care of data management here
     },
     loadContactExcelsior:function(user_id){
 

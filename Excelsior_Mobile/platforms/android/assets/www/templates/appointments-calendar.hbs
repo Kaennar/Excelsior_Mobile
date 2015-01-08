@@ -12,9 +12,97 @@
 <div class="pages">
     <div class="page" data-page="appointments-calendar">
         <div class="page-content">
-            <section class="container">
-                <table class="cal" style="height:200px;"> </table>
-            </section>
+        <!--Some major bull-shit (unsure if it has a hyphen) is going to have to go here -->
+            <div class="content-block">
+                
+                <div class="row">
+                <!-- This is for the Month name and the forward and backward buttons-->
+                    <div class="col-15"> </div>
+                    <div class="col-5"><a onclick="excelsior.loadPreviousMonth();"><i class="icon icon-backward"> </i></a></div>
+                    <div class="col-60 center"><h1 class="calendar-title" id="monthLabel"> </h1></div>
+                    <div class="col-5"><a onclick="excelsior.loadNextMonth();"><i class="icon icon-forward"> </i></a></div> 
+                    <div class="col-15"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-15"> </div>
+                        <!-- this is for the day labels -->
+                        <div class="col-10 center">Sun</div>
+                        <div class="col-10 center">Mon</div>
+                        <div class="col-10 center">Tue</div>
+                        <div class="col-10 center">Wed</div>
+                        <div class="col-10 center">Thur</div>
+                        <div class="col-10 center">Fri</div>
+                        <div class="col-10 center">Sat</div>
+                    <div class="col-15"> </div>
+                </div>
+                <!--From here down are the different weeks -->
+                <div class="row">
+                    <div class="col-15"> </div>
+                        <div class="col-10 center" id="0"> </div>
+                        <div class="col-10 center" id="1"> </div>
+                        <div class="col-10 center" id="2"> </div>
+                        <div class="col-10 center" id="3"> </div>
+                        <div class="col-10 center" id="4"> </div>
+                        <div class="col-10 center" id="5"> </div>
+                        <div class="col-10 center" id="6"> </div>
+                    <div class="col-15"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-15"> </div>
+                        <div class="col-10 center" id="7"> </div>
+                        <div class="col-10 center" id="8"> </div>
+                        <div class="col-10 center" id="9"> </div>
+                        <div class="col-10 center" id="10"> </div>
+                        <div class="col-10 center" id="11"> </div>
+                        <div class="col-10 center" id="12"> </div>
+                        <div class="col-10 center" id="13"> </div>
+                    <div class="col-15"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-15"> </div>
+                        <div class="col-10 center" id="14"> </div>
+                        <div class="col-10 center" id="15"> </div>
+                        <div class="col-10 center" id="16"> </div>
+                        <div class="col-10 center" id="17"> </div>
+                        <div class="col-10 center" id="18"> </div>
+                        <div class="col-10 center" id="19"> </div>
+                        <div class="col-10 center" id="20"> </div>
+                    <div class="col-15"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-15"> </div>
+                        <div class="col-10 center" id="21"> </div>
+                        <div class="col-10 center" id="22"> </div>
+                        <div class="col-10 center" id="23"> </div>
+                        <div class="col-10 center" id="24"> </div>
+                        <div class="col-10 center" id="25"> </div>
+                        <div class="col-10 center" id="26"> </div>
+                        <div class="col-10 center" id="27"> </div>
+                    <div class="col-15"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-15"> </div>
+                        <div class="col-10 center" id="28"> </div>
+                        <div class="col-10 center" id="29"> </div>
+                        <div class="col-10 center" id="30"> </div>
+                        <div class="col-10 center" id="31"> </div>
+                        <div class="col-10 center" id="32"> </div>
+                        <div class="col-10 center" id="33"> </div>
+                        <div class="col-10 center" id="34"> </div>
+                    <div class="col-15"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-15"> </div>
+                        <div class="col-10 center" id="35"> </div>
+                        <div class="col-10 center" id="36"> </div>
+                        <div class="col-10 center" id="37"> </div>
+                        <div class="col-10 center" id="38"> </div>
+                        <div class="col-10 center" id="39"> </div>
+                        <div class="col-10 center" id="40"> </div>
+                        <div class="col-10 center" id="41"> </div>
+                    <div class="col-15"> </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

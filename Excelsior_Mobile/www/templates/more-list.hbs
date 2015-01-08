@@ -8,7 +8,8 @@
     </div>
 </div>
 <div class="pages">
-    <div class="page" data-page="coach-list">
+    <div class="page" data-page="more-list">
+        {{#if user_id}}
         <div class="page-content">
         	<div class="list-block">
         		<div class="list-block-title"> Favorited Coaches </div>
@@ -71,5 +72,41 @@
         		</div>
         	</div>
         </div>
+        {{else}}   
+        <div class="page-content login-screen-content">
+          <div class="login-screen-title">My App</div>
+          <form>
+            <div class="list-block">
+              <ul>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Username</div>
+                    <div class="item-input">
+                      <input type="text" name="username" placeholder="username">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Password</div>
+                    <div class="item-input">
+                      <input type="password" name="password" placeholder="password">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list-block">
+              <ul>
+                <li><a href="#" class="item-link list-button">Sign In</a></li>
+              </ul>
+              <div class="list-block-label">
+                <p><a href="#" onclick="excelsior.loadSignUp();">Sign Up</a></p>
+              </div>
+            </div>
+          </form>
+        </div>
+        {{/if}}
+
     </div>
 </div>
