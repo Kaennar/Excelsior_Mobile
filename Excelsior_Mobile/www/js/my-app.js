@@ -90,27 +90,18 @@ var excelsior = {
 
         //Load signup screen
         console.log("Load Sign Up Called");
-        var json={};
-        var signupTemplate;
-        debugItem=$.get("templates/signup-screen.hbs",
-            function(data){
-                signupTemplate=Template7.compile(data);
-                var handlebarshtml=signupTemplate(json);
-                mainView.router.loadContent(handlebarshtml);
-                signupslider=myApp.slider('.slider-container',{
-                    spaceBetween:100,
-                    pagination:'.slider-pagination',
-                    paginationHide:false,
-                    nextButton:'.slider-next-button',
-                    prevButton:'.slider-prev-button',
-                    onSlideChangeStart:function(slider){
-                        console.log("On Slide Change Start Called");
-                        debugItem=slider;
-                    }
-                });
-                console.log("Signup HTML returned");
-
-        },"html");
+        myApp.popup('.popup-signup');
+        signupslider=myApp.slider('.slider-container',{
+            spaceBetween:100,
+            pagination:'.slider-pagination',
+            paginationHide:false,
+            nextButton:'.slider-next-button',
+            prevButton:'.slider-prev-button',
+            onSlideChangeStart:function(slider){
+                console.log("On Slide Change Start Called");
+                debugItem=slider;
+            }
+        });
     },
     loadCoachProfileView:function(id,storeProfile){
         //Look to make sure that we are able to load the coaches profile
@@ -233,12 +224,12 @@ var excelsior = {
                 }else {
                     favouritesList=id;
                 }
-            alert("Coach added to favourites!");
+            myApp.alert("Coach added to favourites!");
             }else {
                 console.log("Type: "+ typeof(id)+ " is unnaacceptable. Must be string.");
             }
         }else{
-            alert("Coach already in favourites!");
+            myApp.alert("Coach already in favourites!");
             return;
         }
         localStorage.setItem("favourite_coach_list",favouritesList);
@@ -351,6 +342,8 @@ var excelsior = {
         //Take care of data management here
     },
     loadContactExcelsior:function(user_id){
+        //Load options for email or phone.
+        myApp.popup('.popup-contact-excelsior');
 
     },
     loadCalendarData:function(){

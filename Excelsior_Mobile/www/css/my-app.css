@@ -20,6 +20,21 @@ i.icon.icon-right-chevron{
 	height: 15px;
 	background-image: url("glyphicons/png/glyphicons-224-chevron-right.png");	
 }
+i.icon.icon-address{
+  width: 22px;
+  height: 22px;
+  background-image: url("glyphicons/png/glyphicons-21-home.png");
+}
+i.icon.icon-email{
+  width: 22px;
+  height: 22px;
+  background-image: url("glyphicons/png/glyphicons-11-envelope.png");
+}
+i.icon.icon-phone{
+  width: 22px;
+  height: 22px;
+  background-image: url("glyphicons/png/glyphicons-443-earphone.png");
+}
 
 .slider-container{
   height: 90%;
