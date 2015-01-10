@@ -43,10 +43,10 @@
         "com.telerik.plugins.nativepagetransitions": {
             "PACKAGE_NAME": "com.excelsior.mobile.dev"
         },
-        "org.apache.cordova.device": {
+        "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.excelsior.mobile.dev"
         },
-        "org.apache.cordova.console": {
+        "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.excelsior.mobile.dev"
         },
         "org.apache.cordova.dialogs": {

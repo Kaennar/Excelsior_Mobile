@@ -21,18 +21,18 @@ i.icon.icon-right-chevron{
 	background-image: url("glyphicons/png/glyphicons-224-chevron-right.png");	
 }
 i.icon.icon-address{
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   background-image: url("glyphicons/png/glyphicons-21-home.png");
 }
 i.icon.icon-email{
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   background-image: url("glyphicons/png/glyphicons-11-envelope.png");
 }
 i.icon.icon-phone{
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   background-image: url("glyphicons/png/glyphicons-443-earphone.png");
 }
 

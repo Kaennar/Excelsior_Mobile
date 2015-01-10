@@ -20,7 +20,26 @@ i.icon.icon-right-chevron{
 	height: 15px;
 	background-image: url("glyphicons/png/glyphicons-224-chevron-right.png");	
 }
+i.icon.icon-address{
+  width: 20px;
+  height: 20px;
+  background-image: url("glyphicons/png/glyphicons-21-home.png");
+}
+i.icon.icon-email{
+  width: 20px;
+  height: 20px;
+  background-image: url("glyphicons/png/glyphicons-11-envelope.png");
+}
+i.icon.icon-phone{
+  width: 20px;
+  height: 20px;
+  background-image: url("glyphicons/png/glyphicons-443-earphone.png");
+}
 
+.slider-container{
+  height: 90%;
+
+}
 .slider-custom {
   position:relative;
   height:100%;
@@ -35,24 +54,21 @@ i.icon.icon-right-chevron{
   font-size:21px;
 }
 .slider-prev-button, .slider-next-button {
-  position: absolute;
-  width:44px;
-  background: rgba(0,0,0,0.7);
+  padding:2px;
+  width:100%;
   top: 50%;
-  margin-top: -22px;
-  line-height: 44px;
   text-align:center;
 }
 .slider-prev-button {
-  left:0;
+
 }
 .slider-next-button {
-  right:0;
 }
 .slider-pagination-bullet {
   width: 10px;
   height: 10px;
   background: none;
+
   border:1px solid #aaa;
   border-radius: 0 0 0 0;
   opacity:1;

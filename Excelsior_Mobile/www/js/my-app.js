@@ -136,9 +136,6 @@ var excelsior = {
                 mainView.router.loadContent(handlebarshtml);
             },
             "html");
-
-
-
     },
     loadUserProfileView:function(){
         console.log("Load Profile View Called");
@@ -152,9 +149,7 @@ var excelsior = {
             "html");
         //Send the users password and the entered username to the server for auithentication
         //Then call down the data to populate the profile view
-
     },
-
     loadCalendarAppointments:function(){
 
         //We will need to do a call to the server to get the right appointments for this calendar. 
@@ -289,8 +284,6 @@ var excelsior = {
         //Load Favorited coaches from the user_settings.xml
         //Load Recent Coaches from the user_settings.xml
         //Need to get the user id from user_settings.xml
-
-
     },
     loadAthleteProfiles:function(user_id){
         console.log("Load Athlete Profiles Called");
@@ -322,7 +315,6 @@ var excelsior = {
             },
         "html");
         //Take care of data management here
-
     },
     loadAccountSettings:function(user_id){
         console.log("Load Account Settings Called")
@@ -344,7 +336,25 @@ var excelsior = {
     loadContactExcelsior:function(user_id){
         //Load options for email or phone.
         myApp.popup('.popup-contact-excelsior');
-
+    },
+    loadContactPageType:function(contact_type){
+        console.log("Load Contact Page " + contact_type + " Called");
+        console.log(typeof(contact_type));
+        myApp.closeModal('.popup-contact-excelsior');
+        switch(contact_type){
+            case "email":
+                var html;
+                var json;
+                $.get("templates/contact-excelsior-email.hbs", function(data){
+                    html=Template7.compile(data);
+                    var handlebars=html(json);
+                    mainView.router.loadContent(handlebars);
+                },"html");
+            break;
+            case "phone":
+                myApp.alert("512-944-7224");
+            break;
+        }
     },
     loadCalendarData:function(){
         var monthLabel;

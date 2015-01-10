@@ -2,6 +2,7 @@ var dynamicPageIndex = 0;
 var $$ = Dom7;
 var myApp = new Framework7();
 var debugItem;
+var signupslider;
 var currentDate=new Date();
 var mainView = myApp.addView('.view-main', {
             // Because we use fixed-through navbar we can enable dynamic navbar
@@ -18,12 +19,10 @@ var excelsior = {
             $$('.create-page').on('click', function () {
                 excelsior.createContentPage();
                 excelsior.loadCoachesListView();
-                excelsior.loadMoreTab(); //REMEMBER TO REMOVE THIS
             });
         });
         excelsior.registerHandlebarHelpers();
         excelsior.loadCoachesListView();
-        excelsior.loadMoreTab(); //REMEMBER TO REMOVE THIS
     },
     // Generate dynamic page
     createContentPage: function() {
@@ -91,16 +90,18 @@ var excelsior = {
 
         //Load signup screen
         console.log("Load Sign Up Called");
-        var json={};
-        var signupTemplate;
-        debugItem=$.get("templates/signup-screen.hbs",
-            function(data){
-                signupTemplate=Template7.compile(data);
-                var handlebarshtml=signupTemplate(json);
-                mainView.router.loadContent(handlebarshtml);
-                console.log("Signup HTML returned");
-
-        },"html");
+        myApp.popup('.popup-signup');
+        signupslider=myApp.slider('.slider-container',{
+            spaceBetween:100,
+            pagination:'.slider-pagination',
+            paginationHide:false,
+            nextButton:'.slider-next-button',
+            prevButton:'.slider-prev-button',
+            onSlideChangeStart:function(slider){
+                console.log("On Slide Change Start Called");
+                debugItem=slider;
+            }
+        });
     },
     loadCoachProfileView:function(id,storeProfile){
         //Look to make sure that we are able to load the coaches profile
@@ -135,9 +136,6 @@ var excelsior = {
                 mainView.router.loadContent(handlebarshtml);
             },
             "html");
-
-
-
     },
     loadUserProfileView:function(){
         console.log("Load Profile View Called");
@@ -151,9 +149,7 @@ var excelsior = {
             "html");
         //Send the users password and the entered username to the server for auithentication
         //Then call down the data to populate the profile view
-
     },
-
     loadCalendarAppointments:function(){
 
         //We will need to do a call to the server to get the right appointments for this calendar. 
@@ -206,17 +202,34 @@ var excelsior = {
             }
         });
     },
-    favoriteCoach:function(id){
-
-        $.ajax({
-            type:"GET",
-            url:"js/data/user_settings.xml",
-            datatype:"xml",
-            success:function(data){
-                $(data)
-            },
-        });
-    },
+    favouriteCoach:function(id){
+        var favouritesList=localStorage.getItem("favourite_coach_list");
+        var arr=favouritesList.split(" ");
+        var alreadyExists=false;
+        console.log(favouritesList);
+        for (var el in arr){
+            if (id.toString() == el){
+                alreadyExists=true;
+            }
+        }
+        if(!alreadyExists){
+            if(typeof(id)=="number"){
+                if (favouritesList!= "null"){
+                    favouritesList=favouritesList+" "+id.toString();
+                }else {
+                    favouritesList=id;
+                }
+            myApp.alert("Coach added to favourites!");
+            }else {
+                console.log("Type: "+ typeof(id)+ " is unnaacceptable. Must be string.");
+            }
+        }else{
+            myApp.alert("Coach already in favourites!");
+            return;
+        }
+        localStorage.setItem("favourite_coach_list",favouritesList);
+        console.log(favouritesList);
+    }, 
     loadNavbarElementsForView:function(viewname){
 
         switch (viewname){
@@ -247,7 +260,7 @@ var excelsior = {
     loadMoreTab:function(user_id){
         
         var moreTabJson={
-            "user_id":"",//CHANGE THIS TO GET THE SIGN IN PAGE TO SHOW UP
+            "user_id":"17",//CHANGE THIS TO GET THE SIGN IN PAGE TO SHOW UP
             "favCoach":[{"firstname":"Alex","lastname":"Jackson","id":"0","Bio":"Engineering major at Texas A&M Univeristy.","ExperienceLevel":"Expert","TimeDrop":"120","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
                 {"title":"Shes alright. Wasnt good with kids.","content":"Couldnt teach the kids to streamline","assoc_user":"Melony Devogler","postDate":"11/12/2012","rating":"4.5/10"},
                 {"title":"We loved how excited she was about everything all the time!","content":"Exuberant little puppy","assoc_user":"Cassidy Kleinmeyer","postDate":"12/17/2014","rating":"9.6/10"}
@@ -271,8 +284,6 @@ var excelsior = {
         //Load Favorited coaches from the user_settings.xml
         //Load Recent Coaches from the user_settings.xml
         //Need to get the user id from user_settings.xml
-
-
     },
     loadAthleteProfiles:function(user_id){
         console.log("Load Athlete Profiles Called");
@@ -304,7 +315,6 @@ var excelsior = {
             },
         "html");
         //Take care of data management here
-
     },
     loadAccountSettings:function(user_id){
         console.log("Load Account Settings Called")
@@ -324,7 +334,27 @@ var excelsior = {
         //Take care of data management here
     },
     loadContactExcelsior:function(user_id){
-
+        //Load options for email or phone.
+        myApp.popup('.popup-contact-excelsior');
+    },
+    loadContactPageType:function(contact_type){
+        console.log("Load Contact Page " + contact_type + " Called");
+        console.log(typeof(contact_type));
+        myApp.closeModal('.popup-contact-excelsior');
+        switch(contact_type){
+            case "email":
+                var html;
+                var json;
+                $.get("templates/contact-excelsior-email.hbs", function(data){
+                    html=Template7.compile(data);
+                    var handlebars=html(json);
+                    mainView.router.loadContent(handlebars);
+                },"html");
+            break;
+            case "phone":
+                myApp.alert("512-944-7224");
+            break;
+        }
     },
     loadCalendarData:function(){
         var monthLabel;
