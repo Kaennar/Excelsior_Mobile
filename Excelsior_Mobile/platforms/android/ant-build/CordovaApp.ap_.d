@@ -1846,7 +1846,6 @@ C:\Users\Nicholas\Documents\GitHub\Excelsior_Mobile\Excelsior_Mobile\platforms\a
 C:\Users\Nicholas\Documents\GitHub\Excelsior_Mobile\Excelsior_Mobile\platforms\android\assets\www\templates\athlete-profile.hbs \
 C:\Users\Nicholas\Documents\GitHub\Excelsior_Mobile\Excelsior_Mobile\platforms\android\assets\www\templates\coach-list-template.hbs \
 C:\Users\Nicholas\Documents\GitHub\Excelsior_Mobile\Excelsior_Mobile\platforms\android\assets\www\templates\coach-profile.hbs \
-C:\Users\Nicholas\Documents\GitHub\Excelsior_Mobile\Excelsior_Mobile\platforms\android\assets\www\templates\conatact-excelsior-email.hbs \
 C:\Users\Nicholas\Documents\GitHub\Excelsior_Mobile\Excelsior_Mobile\platforms\android\assets\www\templates\contact-excelsior-email.hbs \
 C:\Users\Nicholas\Documents\GitHub\Excelsior_Mobile\Excelsior_Mobile\platforms\android\assets\www\templates\more-list.hbs \
 C:\Users\Nicholas\Documents\GitHub\Excelsior_Mobile\Excelsior_Mobile\platforms\android\assets\www\templates\signup-screen.hbs \

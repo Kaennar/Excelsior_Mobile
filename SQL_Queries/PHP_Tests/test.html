@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="A platform connecting quality swim coaches with determined swimmers">
+        <meta name="keywords" content="Excelsior personal swim training by olympic coaches coaching staff">
+        <meta name="author" content="Excelsior">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <title>Excelsior | Forever Upwards</title>
+       
+    </head>
+
+    <body>
+        <h1> Welcome to the Test Engine </h1>
+        <table>
+            <tr>
+                <td>Thing</td>
+            </tr>
+            <tr>
+                <td>Other Thing </td>
+            </tr>
+            <tr>
+                <td>Other Other Thing </td>
+            </tr>
+            <tr>
+                <td>Other Other Other Thing </td>
+            </tr>
+        </table>
+    </body>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"> </script>
+    <script type="text/javascript">
+    var debugItem;
+
+    $.ajax({
+        type: "GET",
+        url: "coach_list.php",
+        datatype: "json",
+        success:function(data){
+            console.log(data);
+        }
+    });
+    </script>
+
+
+</html>

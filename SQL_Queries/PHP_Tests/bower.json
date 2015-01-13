@@ -1,0 +1,12 @@
+{
+  "name": "bower_components",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Kaennar/Excelsior_Mobile",
+  "authors": [
+    "Nicholas Hemstreet <nhemstreet@austin.rr.com>"
+  ],
+  "keywords": [
+    "ugh"
+  ],
+  "license": "MIT"
+}

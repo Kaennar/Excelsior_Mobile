@@ -1,0 +1,1 @@
+INSERT INTO appointments(coach_id,user_id,appointment_date,confirmed) VALUE(0,2,CURDATE(),true);

@@ -35,7 +35,41 @@ i.icon.icon-phone{
   height: 20px;
   background-image: url("glyphicons/png/glyphicons-443-earphone.png");
 }
+i.icon.icon-calendar{
+  width: 20px;
+  height: 20px;
+  background-image: url("glyphicons/png/glyphicons-46-calendar.png");
+}
+i.icon.icon-coach-list{
+  width: 20px;
+  height: 20px;
+  background-image: url("glyphicons/png/glyphicons-44-group.png");
+}
+i.icon.icon-more-list{
+  width: 20px;
+  height: 20px;
+  background-image: url("glyphicons/png/glyphicons-517-menu-hamburger.png");
+}
+.left{
+  text-align: left;
 
+}
+.buffer{
+  width: 100%;
+  height: 50px;
+}
+.page-content{
+  top:44px;
+  width: 100%;
+  position: absolute;
+}
+
+.right{
+  text-align: right;
+}
+.content-center{
+  align-items:center;
+}
 .slider-container{
   height: 90%;
 

@@ -260,7 +260,7 @@ var excelsior = {
     loadMoreTab:function(user_id){
         
         var moreTabJson={
-            "user_id":"17",//CHANGE THIS TO GET THE SIGN IN PAGE TO SHOW UP
+            "user_id":"",//CHANGE THIS TO GET THE SIGN IN PAGE TO SHOW UP
             "favCoach":[{"firstname":"Alex","lastname":"Jackson","id":"0","Bio":"Engineering major at Texas A&M Univeristy.","ExperienceLevel":"Expert","TimeDrop":"120","video_url":"js/data/Breeja_Larson_BioVideo.mp4","Reviews":[
                 {"title":"Shes alright. Wasnt good with kids.","content":"Couldnt teach the kids to streamline","assoc_user":"Melony Devogler","postDate":"11/12/2012","rating":"4.5/10"},
                 {"title":"We loved how excited she was about everything all the time!","content":"Exuberant little puppy","assoc_user":"Cassidy Kleinmeyer","postDate":"12/17/2014","rating":"9.6/10"}
@@ -320,7 +320,7 @@ var excelsior = {
         console.log("Load Account Settings Called")
         var json={
             "username":"Excelsior and Friends",
-            "user_id":"0"
+            "user_id":""
         };
         var accountSettingsTemplate;
         debugItem=$.get("templates/account-settings.hbs",
@@ -430,6 +430,7 @@ var excelsior = {
         }
         var monthHTML= "<h1>"+monthLabel+"</h1>";
         $("#monthLabel").html(monthHTML);
+        $("#yearLabel").html(currentDate.getFullYear());
         
     },
     loadPreviousMonth:function(){
@@ -440,6 +441,7 @@ var excelsior = {
             currentDate.setMonth(11);
             var year=currentDate.getFullYear()-1;
             currentDate.setYear(year);
+            $("#yearLabel").html(year);
         }
         excelsior.clearCalendar();
         excelsior.loadCalendarData();
@@ -452,6 +454,7 @@ var excelsior = {
             currentDate.setMonth(0);
             var year=currentDate.getFullYear()+1;
             currentDate.setYear(year);
+            $("#yearLabel").html(year);
         }
         excelsior.clearCalendar();
         excelsior.loadCalendarData();

@@ -1,0 +1,1 @@
+INSERT INTO coaches(first_name,last_name,video_url,coach_id,experience_level,bio,time_dropperd,email,phone,address) VALUE('Donnie','Walker','https://www.youtube.com/watch?v=h7Vlxi4oF7k',0,'Expert','Hes kinda cool.',145,'donniejwalker@gmail.com','512-786-9876','1700 Research Pkwy');

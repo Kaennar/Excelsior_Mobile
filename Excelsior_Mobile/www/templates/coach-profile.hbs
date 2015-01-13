@@ -14,10 +14,10 @@
         <div class="page-content">
 
             <div class="row">
-                <div class="col-100" style="padding-left:43px;">
-                    <video width="500" height="375"controls>
-                        <source src="{{video_url}}">
-                    </video>
+                <div class="col-100 content-center" style="padding-top:5px; padding-bottom:5px; padding-left=10px; padding-right:10px;">
+                    {{#if video_url}}
+                        <iframe width="100%" height="225" src="http://www.youtube.com/embed/E4YiGdf_3dg" frameborder="0" allowfullscreen></iframe>
+                    {{/if}}
                 </div>
                 <div class="col-100">
                     <b style="font-size:160%; padding-left:16px;"> 
@@ -59,17 +59,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-60">
-                    </div>
-                    <div class="col-15">
-                        {{postDate}}
+                    <div class="col-30">
                     </div>
                     <div class="col-25">
+                        {{postDate}}
+                    </div>
+                    <div class="col-45">
                         by {{assoc_user}}
                     </div>
                 </div>
             {{/each}}
+            <div class="row">
+                <div class="col-100"><a class="button center"> Book Me! </a></div>
+            </div>
             {{/if}}
+            <div class="buffer"> </div>
         </div>
     </div>
 </div>
